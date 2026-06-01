@@ -227,4 +227,4 @@ The exported Excel has 4 sheets:
 - Subject data is sensitive — secure your backup media and dispose of it per your ethics protocol.
 
 ---
-Lightweight · offline · easy to tweak. Cleanly layered (see comments in `app/`) for further development.
+Layered (see comments in `app/`) for further development.
