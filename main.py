@@ -13,6 +13,7 @@ from tkinter import messagebox
 
 from app import config, db, i18n
 from app.ui.main_window import MainWindow
+from app.ui.widgets import show_splash
 
 
 def main():
@@ -29,11 +30,23 @@ def main():
             pass
 
     root = tk.Tk()
+    root.withdraw()  # 先隐藏主窗口，展示启动界面(splash)
     try:
-        MainWindow(root, settings)
+        app = MainWindow(root, settings)
     except Exception as e:
         messagebox.showerror("Error", str(e))
         raise
+
+    # 启动界面：作者署名 + 联系链接，短暂展示后进入主界面
+    def _reveal():
+        root.deiconify()
+        root.lift()
+        try:
+            root.focus_force()
+        except Exception:
+            pass
+
+    show_splash(root, app.font_family, on_close=_reveal)
     root.mainloop()
 
 

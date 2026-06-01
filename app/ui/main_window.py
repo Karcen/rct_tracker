@@ -7,6 +7,7 @@ from tkinter import ttk
 import tkinter.font as tkfont
 
 from app import config, i18n
+from app.ui import widgets
 from app.ui.register_frame import RegisterFrame
 from app.ui.scan_frame import ScanFrame
 from app.ui.ledger_frame import LedgerFrame
@@ -71,6 +72,11 @@ class MainWindow:
         self.lang_combo.set(self._lang_display[i18n.get_language()])
         self.lang_combo.bind("<<ComboboxSelected>>", self._on_lang_change)
         self.lang_combo.pack(side="left")
+
+        # 右上角：作者署名 + 联系链接（点击打开作者主页）
+        widgets.make_hyperlink(top, i18n.T("contact_author")).pack(side="right", padx=(0, 2))
+        ttk.Label(top, text=i18n.T("made_by_full", name=config.AUTHOR_NAME) + "  ·",
+                  foreground="#5f6368").pack(side="right", padx=(0, 4))
 
         # 选项卡
         self.nb = ttk.Notebook(self.root)

@@ -17,6 +17,10 @@ APP_NAME = "RCT 线下追踪调研管理系统"
 APP_NAME_EN = "RCT Field Tracking Manager"
 APP_VERSION = "1.0.0"
 
+# 作者署名与联系链接（启动界面 / 主窗口 / 关于页 共用）
+AUTHOR_NAME = "Jiacheng (Karcen) Zheng"
+AUTHOR_URL = "https://karcen.github.io/zhengjiacheng.github.io/"
+
 
 def get_base_dir():
     """获取程序运行根目录（兼容 PyInstaller onefile/onedir 打包）。"""

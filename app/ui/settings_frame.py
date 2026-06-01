@@ -6,6 +6,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 
 from app import config, db, i18n, logger
+from app.ui import widgets
 
 
 class SettingsFrame(ttk.Frame):
@@ -74,6 +75,12 @@ class SettingsFrame(ttk.Frame):
         about.pack(fill="x", pady=6)
         ttk.Label(about, text=i18n.T("about_text", ver=config.APP_VERSION),
                   justify="left").pack(anchor="w")
+        author_row = ttk.Frame(about)
+        author_row.pack(anchor="w", pady=(8, 0))
+        ttk.Label(author_row,
+                  text=i18n.T("made_by_full", name=config.AUTHOR_NAME) + " · ") \
+            .pack(side="left")
+        widgets.make_hyperlink(author_row, config.AUTHOR_URL).pack(side="left")
 
     # ------------------------------------------------------------------
     def _apply_language(self):
